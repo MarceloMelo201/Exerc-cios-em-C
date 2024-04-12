@@ -1,0 +1,45 @@
+//Programa que pede nome e idade de 5 pessoas utilizando [struct],[typedef],[vetores] e [for].
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+struct pessoa{
+	char nome[100];
+	int idade;
+};
+
+typedef struct pessoa pessoa;
+
+#define TAM 5
+
+int main(){
+	
+	setlocale(LC_ALL, "Portuguese");
+	
+	int i;
+	pessoa pessoa[TAM];
+	
+	for(i=0;i<TAM;i++){
+	printf("Digite o nome da [%d]ª pessoa: ", i+1);
+	scanf("%s", &pessoa[i].nome);
+	fflush(stdin);
+		
+    printf("Digite a idade da [%d]ª pessoa: ", i+1);
+    scanf("%d", &pessoa[i].idade);
+    
+    system("cls");
+}
+	
+	for(i=0;i<TAM;i++){
+		
+		printf("\n\n==== PESSOA %d ====", i+1);
+		printf("\nNome: %s", pessoa[i].nome); 	
+		printf("\nIdade: %d", pessoa[i].idade);
+	
+	}
+	
+	
+	return 0;
+}
