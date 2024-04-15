@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+#define TAM 5
+
+int main(){
+	
+	setlocale(LC_ALL, "");
+	int i = 0, numero[TAM], maior = INT_MIN, menor = INT_MAX;
+	int positivos = 0, negativos = 0, inseridos = 0, pares = 0, impares = 0;
+	int somaPar = 0, somaImpar = 0, somaTotal = 0;
+	float mediaPar, mediaImpar, mediaTotal;
+	
+	for (i = 0; i < TAM; i++) { 
+	
+	printf("Digite o %d° número: ", i + 1);
+	scanf("%d",&numero[i]);
+	fflush(stdin);
+	
+	if (numero[i] > 0) {
+		
+		positivos++;
+	} else {
+	    negativos++;
+	}
+	
+	if (numero[i] % 2 == 0){
+		pares++;
+		somaPar+= numero[i];
+		
+	} else if (numero[i] % 2 == 1){
+		impares++;
+		somaImpar += numero[i];
+	}
+		
+		if (numero[i] > maior){
+			maior = numero[i];
+		}
+		
+		if (numero[i] < menor ){
+			menor = numero[i];
+		}
+		
+		
+		somaTotal += numero[i];
+		inseridos++;
+	}
+	
+	mediaPar = somaPar / pares;
+	mediaImpar = somaImpar / impares;
+	mediaTotal = somaTotal / inseridos;
+	
+	
+	printf("\n=== RESULTADOS ===");
+	
+	printf("\nQuantidade de números negativos: %d", negativos );
+	printf("\nQuantidade de números positivos: %d", positivos );
+	printf("\nQuantidade de números pares: %d", pares );
+	printf("\nQuantidade de números impares: %d", impares );
+	printf("\nMaior número: %d", maior );
+	printf("\nMenor número: %d", menor);
+	printf("\nMédia de números pares: %.2f", mediaPar);
+	printf("\nMédia de números impares: %.2f", mediaImpar);
+	printf("\nMédia Total: %.2f", mediaTotal);
+	
+	printf("\n\n=== ORDEM INVERSA ===");
+	
+	for (i = 4; i >= 0; i--){
+		printf("\n%d° número: %d", i+1, numero[i]);
+	}
+	
+	return 0;
+}
