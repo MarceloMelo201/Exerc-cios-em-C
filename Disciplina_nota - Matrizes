@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+typedef struct {
+	
+	char nome[3][200];
+	int nota[3][2];
+	int soma;
+	float media[3];
+	
+}materia;
+
+int main (){
+	
+	setlocale(LC_ALL, "");
+	
+	materia materia;
+	materia.soma = 0;
+	
+	int i, j;
+	
+	for(i=0; i<3;i++){
+		printf("Nome da disciplina: ");
+		scanf("%s", &materia.nome[i]);
+		
+		fflush(stdin);
+		
+		for(j = 0; j < 2; j++){
+			printf("Digite a %dª nota: ", j+1);
+			scanf("%d", &materia.nota[i][j]);
+			
+			materia.soma += materia.nota[i][j]; 
+			
+		}	
+		   materia.media[i] = materia.soma / (float)2;
+		   
+           materia.soma = 0;
+	}
+	
+	system("cls");
+	
+	for(i = 0; i < 3; i++){
+		printf("\nDisciplina: %s", materia.nome[i]);
+		
+		for(j = 0; j < 2; j++){
+			printf("\nNota %d: %d", j+1, materia.nota[i][j]); 
+			
+		}
+		
+		printf("\nMédia: %.2f\n", materia.media[i]);
+	}
+	
+	
+	
+	
+	return 0;
+}
